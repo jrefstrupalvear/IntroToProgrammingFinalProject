@@ -1,7 +1,7 @@
 # Stock Predictor 
 
 ## Description
-Using Machine Learning to Analyze current stock market trends and predict stock prices. Analyze the trends of chosen stocks and create a graph
+Using Machine Learning to Analyze current stock market trends and predict stock prices. Analyze the trends of chosen stocks and create a graph to predict where the stocks will be at in the future.
 
 ## Getting Started
 
