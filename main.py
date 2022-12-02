@@ -22,6 +22,8 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.alert import Alert
+
 
 
 #asks the user for imput and and then launches a chrome window where it navigates to the 
@@ -30,9 +32,26 @@ symbol = input("enter the stock symbol")
 browser = webdriver.Chrome()
 browser.implicitly_wait(0.5)
 browser.get ("https://finance.yahoo.com/quote/" + symbol)
+
+browser.implicitly_wait(11)
+
+close = browser.find_element(By.XPATH, "//*[@id='myLightboxContainer']/section/button[2]")
+close.click
+# alert = Alert(browser)
+# alert.dismiss
 # alert = browser.switch_to.alert
 # alert.dismiss
+search_results = browser.find_elements(By.XPATH,browser.find_elements(By.ID,"Col1-1-HistoricalDataTable-Proxy"))
+# searchresults = driver.find_elements(By.XPATH,"//span[contains(@class,'ng-binding')]")
 
+datafound = []
+for i in search_results:
+    if len(i.text) > 0:
+        datafound.append(i.text)
+    if len(datafound) > 45:
+        break
+
+print(datafound)
 #so the user can actually see something
 browser.implicitly_wait(0.5)
 time.sleep(3)

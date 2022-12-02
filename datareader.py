@@ -1,14 +1,24 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-data = pd.read_excel("AAPL.csv.xlsx")
+# sources: https://www.geeksforgeeks.org/writing-excel-sheet-using-python/
 
 
-data.plot()
-plt.show()
-import pandas as pd
+############## open website with selenium and webdriver ###################
+from time import sleep
+import xlwt
+from xlwt import Workbook
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
 
-pd.options.display.max_rows = 9999
+# scrape page
+URL = 'https://www.pro-football-reference.com/years/2022/rushing.htm'
+# URL = 'https://herenow.com/results/#/races/20899/results'
 
-df = pd.read_csv('AAPL.csv')
+chrome_driver = "Code\Projects\chromedriver.exe"
+driver = webdriver.Chrome(chrome_driver)
+driver.get(URL)
+sleep(5)
+# spans = driver.find_element(By.TAG_NAME, "span")
+# print(type(spans))
 
-print(df) 
+
+#################### write to excel #########################
