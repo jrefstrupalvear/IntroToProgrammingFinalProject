@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 # plt.scatter(x, y)
 # plt.show()
 import time
-from bs4 import BeautifulSoup
+import scipy as sp
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -31,7 +31,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 #yahoo finance page for that symbol
 symbol = input("enter the stock symbol")
 browser = webdriver.Chrome()
-action = ActionChains(browser)
 
 browser.implicitly_wait(0.5)
 browser.get ("https://finance.yahoo.com/quote/" + symbol)
