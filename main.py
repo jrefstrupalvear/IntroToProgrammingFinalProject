@@ -1,4 +1,6 @@
-''' Research:
+''' 
+Joshua Refstrup Alvear
+Research:
         - for machine learning I will use scikit- learn library/ or the scipy one
         - I will also use the w3 schools resource on machine learning https://www.w3schools.com/python/python_ml_mean_median_mode.asp
         - I will also by using the numpy module to work with numbers
@@ -42,9 +44,9 @@ browser.implicitly_wait(15)
 
 
 
-Element = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
-)
+#Element = WebDriverWait(browser, 10).until(
+ #       EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
+#)
 later = browser.find_element(By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]")
 print (later.text)
 
