@@ -11,14 +11,11 @@
 #dad's help
 #prices are closing prices
 # import selenium
-
+# https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/
+  #above website of explicit wait
 from xpaths_and_settings import *
 import matplotlib.pyplot as plt
-
-# 
-
-# plt.scatter(x, y)
-# plt.show()
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 import scipy as sp
 import pandas as pd
@@ -26,6 +23,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import numpy as np
 
+from selenium.webdriver.support import expected_conditions as EC
 
 
 
@@ -41,6 +39,12 @@ browser.get ("https://finance.yahoo.com/quote/" + symbol)
 
 browser.implicitly_wait(15)
 
+
+
+
+Element = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
+)
 later = browser.find_element(By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]")
 print (later.text)
 
