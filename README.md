@@ -1,15 +1,15 @@
 # Stock Predictor 
 
 ## Description
-Using Machine Learning to Analyze current stock market trends and predict stock prices. Analyze the trends of chosen stocks and create a graph to predict where the stocks will be at in the future.
+Uses selenium to scrape stock data from yahoo finance and simple machine learning to make an easy prediction
 
 ## Getting Started
 
 ### Dependencies
 
 
- Python 3.10, Pygame, python
-* works on all OS that can run python and pygame
+ Python 3.10, python, matplotlib, numpy, selenium
+* works on all OS that can run python all the above libraries
 
 ### Installing
 

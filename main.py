@@ -6,8 +6,12 @@
         - using selenium to import data from stock website
         # '''
 
-
+#https://www.tutorialspoint.com/google-search-automation-with-python-selenium
+#selenium documentation
+#dad's help
+#prices are closing prices
 # import selenium
+
 from xpaths_and_settings import *
 import matplotlib.pyplot as plt
 
@@ -81,7 +85,3 @@ time.sleep(3)
 plt.scatter(numbers, price1found)
 plt.show()#so the user can actually see something
 
-#https://www.tutorialspoint.com/google-search-automation-with-python-selenium
-#selenium documentation
-#dad's help
-#prices are closing prices
