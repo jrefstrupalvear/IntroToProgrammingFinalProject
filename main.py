@@ -39,14 +39,14 @@ browser = webdriver.Chrome()
 browser.implicitly_wait(0.5)
 browser.get ("https://finance.yahoo.com/quote/" + symbol)
 
-browser.implicitly_wait(15)
 
 
 
 
-#Element = WebDriverWait(browser, 10).until(
- #       EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
-#)
+
+Element = WebDriverWait(browser, 20).until(
+       EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
+)
 later = browser.find_element(By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]")
 print (later.text)
 
