@@ -28,15 +28,30 @@ import numpy as np
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 from selenium.webdriver.common.action_chains import ActionChains
+price1found = []
+price2found = []
 
+class Scraper:
+  def __init__(self, pri1, pri2,arr):
+    x = 1
+    
+    self.pri1 = pri1
+    self.pri2 = pri2
+    self.arr = arr
+
+    while x !=16:
+       priceElements = browser.find_elements (By.XPATH, pri1+str(x)+pri2)
+       if len(priceElements) == 1:
+         arr.append(float(priceElements[0].text))
+       x += 1
 #asks the user for imput and and then launches a chrome window where it navigates to the 
 #yahoo finance page for that symbol
 symbol = input("enter the stock symbol")
 browser = webdriver.Chrome()
-
+# waits for the window to pop up
 browser.implicitly_wait(0.5)
+#takes us to the website we want to go -- works together with user input
 browser.get ("https://finance.yahoo.com/quote/" + symbol)
 
 
@@ -44,43 +59,47 @@ browser.get ("https://finance.yahoo.com/quote/" + symbol)
 
 
 
-Element = WebDriverWait(browser, 20).until(
+#waits until an element is located, it will wait for a maximum of 20 seconds
+# the element in our case is the maybe later popup we need to click
+Element = WebDriverWait(browser, 25).until(
        EC.presence_of_element_located((By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]"))
 )
+
+#finds that same element
 later = browser.find_element(By.XPATH, "//*[@id=\"myLightboxContainer\"]/section/button[2]")
 print (later.text)
 
+# clicks that element
 later.click()
 
+
+#finds the historical data tab from which the data will be pulled
 historical = browser.find_element(By.XPATH, "//*[@id=\"quote-nav\"]/ul/li[6]/a")
 print (historical.text)
 
-
-
-
+#clicks the historical data tab
 historical.click ()
 
 
-x = 1
-price_results = browser.find_elements (By.XPATH,"//*[@id=\"Col1-1-HistoricalDataTable-Proxy\"]/section/div[2]/table/thead/tr/th[5]")
+# waits for the browser to actually load the historical data
 browser.implicitly_wait(5)
-price1found = []
 
-def price_scrape ():
-    x = 1
-    while x !=16:
-       priceElements = browser.find_elements (By.XPATH, "//*[@id=\"Col1-1-HistoricalDataTable-Proxy\"]/section/div[2]/table/tbody/tr[" + str(x) + "]/td[5]/span")
-       if len(priceElements) == 1:
-         price1found.append(float(priceElements[0].text))
-       x += 1
+#creates the list for the closing price
 
+closing_price = Scraper (price1,price2,price1found) 
+closing_price
+opening_price = Scraper (price1_1, price2_2,price2found)
+
+price2found = np.array(price2found)
 
 
 
 
 
 
-price_scrape()
+
+
+
 price1found = np.array(price1found)
 print (price1found)
 print(numbers)
@@ -89,5 +108,6 @@ browser.implicitly_wait(0.5)
 time.sleep(3)
 
 plt.scatter(numbers, price1found)
+plt.scatter(numbers, price2found)
 plt.show()#so the user can actually see something
 
