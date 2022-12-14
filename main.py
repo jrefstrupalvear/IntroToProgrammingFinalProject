@@ -19,8 +19,8 @@ from xpaths_and_settings import *
 import matplotlib.pyplot as plt
 from selenium.webdriver.support.ui import WebDriverWait
 import time
-import scipy as sp
-import pandas as pd
+import sys
+from scipy import stats
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import numpy as np
@@ -85,19 +85,20 @@ historical.click ()
 browser.implicitly_wait(5)
 
 #creates the list for the closing price
-
 closing_price = Scraper (price1,price2,price1found) 
 closing_price
 opening_price = Scraper (price1_1, price2_2,price2found)
 
 price2found = np.array(price2found)
+slope, intercept, r, p, std_err = stats.linregress (numbers, price1found)
+
+
+def prediction (x):
+  return slope * x +intercept
 
 
 
-
-
-
-
+mypredic = list(map(prediction,numbers))
 
 
 price1found = np.array(price1found)
@@ -108,6 +109,7 @@ browser.implicitly_wait(0.5)
 time.sleep(3)
 
 plt.scatter(numbers, price1found)
+plt.plot (numbers, mypredic)
 plt.scatter(numbers, price2found)
 plt.show()#so the user can actually see something
 
