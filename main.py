@@ -19,7 +19,6 @@ from xpaths_and_settings import *
 import matplotlib.pyplot as plt
 from selenium.webdriver.support.ui import WebDriverWait
 import time
-import sys
 from scipy import stats
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -31,6 +30,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 price1found = []
 price2found = []
+price3found = []
+price4found = []
 
 class Scraper:
   def __init__(self, pri1, pri2,arr):
@@ -84,13 +85,29 @@ historical.click ()
 # waits for the browser to actually load the historical data
 browser.implicitly_wait(5)
 
-#creates the list for the closing price
+#instantiating the classes 
 closing_price = Scraper (price1,price2,price1found) 
 closing_price
-opening_price = Scraper (price1_1, price2_2,price2found)
+opening_price = Scraper (price1_2, price2_2,price2found)
+high_price = Scraper (price1_3,price2_3, price3found)
+low_price = Scraper(price1_4,price2_4,price4found)
 
+# the arrays created in the class must be converted into a numpy array
+# doing this for all of them.... 
+
+price1found = np.array(price1found)
 price2found = np.array(price2found)
+price3found = np.array(price3found)
+price4found = np.array(price4found)
+
+
+# getting the slope for all of the lines with linear regression so that it will make a loose prediction
+# of where the stocks will actually go
 slope, intercept, r, p, std_err = stats.linregress (numbers, price1found)
+slope, intercept, r, p, std_err = stats.linregress (numbers, price2found)
+slope, intercept, r, p, std_err = stats.linregress (numbers, price3found)
+slope, intercept, r, p, std_err = stats.linregress (numbers, price4found)
+
 
 
 def prediction (x):
@@ -98,18 +115,21 @@ def prediction (x):
 
 
 
-mypredic = list(map(prediction,numbers))
+mypredic1 = list(map(prediction,numbers))
+mypredic2 = list(map(prediction,numbers))
 
-
-price1found = np.array(price1found)
 print (price1found)
 print(numbers)
 
 browser.implicitly_wait(0.5)
 time.sleep(3)
-
+plt.subplot(1,2,1)
 plt.scatter(numbers, price1found)
-plt.plot (numbers, mypredic)
+plt.title("Closing Prices")
+plt.plot (numbers, mypredic1)
+plt.subplot(1,2,2)
 plt.scatter(numbers, price2found)
+plt.title("Opening Prices")
+plt.plot (numbers,mypredic2)
 plt.show()#so the user can actually see something
 

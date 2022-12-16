@@ -1,7 +1,7 @@
 # Stock Predictor 
 
 ## Description
-Uses selenium to scrape stock data from yahoo finance and simple machine learning to make an easy prediction
+Uses selenium to scrape stock data from yahoo finance and simple machine learning to make an easy prediction. Goals: Scrape Data from a Website and Present it in a tangible Way
 
 ## Getting Started
 
@@ -13,30 +13,36 @@ Uses selenium to scrape stock data from yahoo finance and simple machine learnin
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Download and Run it in a code editor/viewer
+    - Make sure libraries are installed
+    - make sure python is installed
+
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* How To Run
+- run the program on whichever editor your are using
+- wait for a prompt in the terminal to enter your stock symbol (ALL CAPS, must be symbol)
+- wait as the program opens up chrome and scrapes for the data
+- look at the graph with the simple linear regression prediction
+- close tabs when done
+
+- 
 ```
 code blocks for commands
 ```
 
 ## Help
 
-Any advice for common problems or issues.
-```
-command to run if program contains helper info
-```
+- make sure that when you enter you symbol it is only the symbol. Don't use spaces as they will take you to a different part of the website
+- depending on your connection, it might take a while for selenium to navigate as it waits for certain elements to appear on screen
+- if it is still not working add more time to the WebDriverWait instantiation found on line 65
 
 ## Authors
 
-Contributors names and contact info
 
-ex. Joshua Refstrup Alvear 
-ex. J.RefstrupAlvear25@bcp.org
+ Joshua Refstrup Alvear 
+ J.RefstrupAlvear25@bcp.org
 
 ## Version History
 
