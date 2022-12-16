@@ -5,6 +5,7 @@ Research:
         - I will also use the w3 schools resource on machine learning https://www.w3schools.com/python/python_ml_mean_median_mode.asp
         - I will also by using the numpy module to work with numbers
         - importing matplotlib to deal with graphs
+         - will use scipy for linear regression prediction
         - using selenium to import data from stock website
         # '''
 
@@ -40,11 +41,17 @@ class Scraper:
     self.pri1 = pri1
     self.pri2 = pri2
     self.arr = arr
-
-    while x !=16:
+# gets data for the last 25 days
+    while x !=27:
+      # finds the element using the xpath, the pri1 pri2 seperation is so that I can fit a
+      # variable into the equation
        priceElements = browser.find_elements (By.XPATH, pri1+str(x)+pri2)
+       #checks to make sure there is something in the priceElements
        if len(priceElements) == 1:
+        # appends that to the corresponding list that we put into the parameters as an argument
+
          arr.append(float(priceElements[0].text))
+         #adds one everytime so that it will keep moving down the xpath
        x += 1
 #asks the user for imput and and then launches a chrome window where it navigates to the 
 #yahoo finance page for that symbol
@@ -103,33 +110,71 @@ price4found = np.array(price4found)
 
 # getting the slope for all of the lines with linear regression so that it will make a loose prediction
 # of where the stocks will actually go
-slope, intercept, r, p, std_err = stats.linregress (numbers, price1found)
-slope, intercept, r, p, std_err = stats.linregress (numbers, price2found)
-slope, intercept, r, p, std_err = stats.linregress (numbers, price3found)
-slope, intercept, r, p, std_err = stats.linregress (numbers, price4found)
+#I am mainly looking fo the slope
+# this is from w3 schools section on linear regression
+slope1, intercept, r, p, std_err = stats.linregress (numbers, price1found)
+slope2, intercept, r, p, std_err = stats.linregress (numbers, price2found)
+slope3, intercept, r, p, std_err = stats.linregress (numbers, price3found)
+slope4, intercept, r, p, std_err = stats.linregress (numbers, price4found)
 
 
+# finding the line for each of the four graphs, 
 
-def prediction (x):
-  return slope * x +intercept
+def prediction1 (x):
+  return slope1* x +intercept
+
+def prediction2 (x):
+  return slope2* x +intercept
+
+def prediction3 (x):
+  return slope3* x +intercept
+
+def prediction4 (x):
+  return slope4* x +intercept
 
 
-
-mypredic1 = list(map(prediction,numbers))
-mypredic2 = list(map(prediction,numbers))
+mypredic1 = list(map(prediction1,numbers2))
+mypredic2 = list(map(prediction2,numbers2))
+mypredic3 = list(map(prediction3,numbers2))
+mypredic4 = list(map(prediction4,numbers2))
 
 print (price1found)
 print(numbers)
 
 browser.implicitly_wait(0.5)
 time.sleep(3)
-plt.subplot(1,2,1)
+
+# setting the figure size so that it takes up most of the screen
+plt.figure(figsize=(20,10))
+
+#subplots are so that we can see all the data on one screen on multiple graphs, not just on one graph 
+#the arguments are (number of rows, number of columns, position)
+plt.subplot(2,2,1)
+#plots the scatter plot using numbers as the x and the price1found array on the y axis
 plt.scatter(numbers, price1found)
+#naming the individual graphs so the user can differenciate
 plt.title("Closing Prices")
-plt.plot (numbers, mypredic1)
-plt.subplot(1,2,2)
+# ploting the line we found using linear regression
+plt.plot (numbers2, mypredic1)
+
+# doing all of this with the other graphs
+
+plt.subplot(2,2,2)
 plt.scatter(numbers, price2found)
 plt.title("Opening Prices")
-plt.plot (numbers,mypredic2)
-plt.show()#so the user can actually see something
+plt.plot (numbers2,mypredic2)
+
+plt.subplot(2,2,3)
+plt.scatter(numbers,price3found)
+plt.title ("High Prices")
+plt.plot(numbers2,mypredic3)
+
+plt.subplot(2,2,4)
+plt.scatter(numbers,price4found)
+plt.title ("Low Prices")
+plt.plot(numbers2,mypredic4)
+
+
+#so the user can actually see something
+plt.show()
 
