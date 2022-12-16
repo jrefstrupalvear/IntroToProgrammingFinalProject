@@ -1,14 +1,17 @@
 # Stock Predictor 
 
 ## Description
-Uses selenium to scrape stock data from yahoo finance and simple machine learning to make an easy prediction. Goals: Scrape Data from a Website and Present it in a tangible Way
+This program was created to scrape stock data and make a simple prediction based off it. I used selenium to navigate chrome and eventually scrpae data from yahoo finance. I also used numpy and matplotlib to plot the data. FOor the prediction I used linear regression with the scipy library. Typing in the stock symbol in the terminal, will get you four graphs (for opening,closing,high price, and low price). These graphs will start at 25 days ago and 0 will be today. They will also predict the direction the prices is heading for the next 25 days.
+
+## Legal Disclaimer
+By downloading this program you assume full resposibility of your decisions on the stockmarket even if they are influence by what you see here. I am not liable for your loses on the market. This is a tool developed for a class and should not be used as a method of making stock decisions. The hope was that it would give an idea of where a stock is going over the next 25 days, nothing more.
 
 ## Getting Started
 
 ### Dependencies
 
 
- Python 3.10, python, matplotlib, numpy, selenium
+ Python 3.10, python, matplotlib, numpy, selenium,scipy
 * works on all OS that can run python all the above libraries
 
 ### Installing
@@ -42,7 +45,8 @@ code blocks for commands
 
 
  Joshua Refstrup Alvear 
- J.RefstrupAlvear25@bcp.org
+ 
+ Email: J.RefstrupAlvear25@bcp.org
 
 ## Version History
 
@@ -60,5 +64,10 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 Inspiration, code snippets, etc.
 * [w3Schools](https://www.w3schools.com/python/default.asp)
-* [PyGame](https://www.pygame.org/docs/)
+* [Selenium Documetation](https://selenium-python.readthedocs.io/)
 * [Automate The Boring Stuff](https://automatetheboringstuff.com/)
+* [Google Search Automation](https://www.tutorialspoint.com/google-search-automation-with-python-selenium)
+* [Explicit Wait Tutorial](https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/)
+* Dad's help with XPATHS
+
+
