@@ -68,6 +68,7 @@ Inspiration, code snippets, etc.
 * [Automate The Boring Stuff](https://automatetheboringstuff.com/)
 * [Google Search Automation](https://www.tutorialspoint.com/google-search-automation-with-python-selenium)
 * [Explicit Wait Tutorial](https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/)
+* [Labeling Axes](https://www.edureka.co/community/102186/how-set-the-figure-title-and-axes-labels-font-size-matplotlib)
 * Dad's help with XPATHS
 
 

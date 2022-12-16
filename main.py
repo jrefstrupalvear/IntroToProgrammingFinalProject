@@ -8,24 +8,31 @@ Research:
          - will use scipy for linear regression prediction
         - using selenium to import data from stock website
         # '''
+#https://www.w3schools.com/python/default.asp
+# #selenium documentation
+#https://selenium-python.readthedocs.io/
+#Google Search Automation https://www.tutorialspoint.com/google-search-automation-with-python-selenium
+#Explicit Wait Tutorial https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/
+#Dad's help with XPATHS
+#labeling axes https://www.edureka.co/community/102186/how-set-the-figure-title-and-axes-labels-font-size-matplotlib
 
-#https://www.tutorialspoint.com/google-search-automation-with-python-selenium
-#selenium documentation
-#dad's help
-#prices are closing prices
-# import selenium
-# https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/
-  #above website of explicit wait
+#imports my settings
 from xpaths_and_settings import *
+#for graphs
 import matplotlib.pyplot as plt
+#for chrome navigation and web scraping
 from selenium.webdriver.support.ui import WebDriverWait
-import time
-from scipy import stats
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
+
+# for waiting
+import time
+# for linear regression
+from scipy import stats
+#for dealing with numbers and plotting them (working with matplotlib)
 import numpy as np
 
-from selenium.webdriver.support import expected_conditions as EC
 
 
 from selenium.webdriver.common.action_chains import ActionChains
@@ -133,6 +140,7 @@ def prediction4 (x):
   return slope4* x +intercept
 
 
+# makes the data from the functions into a list
 mypredic1 = list(map(prediction1,numbers2))
 mypredic2 = list(map(prediction2,numbers2))
 mypredic3 = list(map(prediction3,numbers2))
@@ -154,6 +162,9 @@ plt.subplot(2,2,1)
 plt.scatter(numbers, price1found)
 #naming the individual graphs so the user can differenciate
 plt.title("Closing Prices")
+#labeling the axes 
+plt.ylabel("Price in $",fontsize=6)
+plt.xlabel ("Days (today is 0)",fontsize=6)
 # ploting the line we found using linear regression
 plt.plot (numbers2, mypredic1)
 
@@ -162,16 +173,22 @@ plt.plot (numbers2, mypredic1)
 plt.subplot(2,2,2)
 plt.scatter(numbers, price2found)
 plt.title("Opening Prices")
+plt.ylabel("Price in $",fontsize=6)
+plt.xlabel ("Days (today is 0)",fontsize=6)
 plt.plot (numbers2,mypredic2)
 
 plt.subplot(2,2,3)
 plt.scatter(numbers,price3found)
 plt.title ("High Prices")
+plt.ylabel("Price in $",fontsize=6)
+plt.xlabel ("Days (today is 0)",fontsize=6)
 plt.plot(numbers2,mypredic3)
 
 plt.subplot(2,2,4)
 plt.scatter(numbers,price4found)
 plt.title ("Low Prices")
+plt.ylabel("Price in $",fontsize=6)
+plt.xlabel ("Days (today is 0)",fontsize=6)
 plt.plot(numbers2,mypredic4)
 
 
