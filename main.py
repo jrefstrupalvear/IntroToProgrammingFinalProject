@@ -15,7 +15,7 @@ Research:
 #Explicit Wait Tutorial https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/
 #Dad's help with XPATHS
 #labeling axes https://www.edureka.co/community/102186/how-set-the-figure-title-and-axes-labels-font-size-matplotlib
-
+# Mr. Cozort's class course files
 #imports my settings
 from xpaths_and_settings import *
 #for graphs

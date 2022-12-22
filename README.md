@@ -70,5 +70,7 @@ Inspiration, code snippets, etc.
 * [Explicit Wait Tutorial](https://www.geeksforgeeks.org/explicit-waits-in-selenium-python/)
 * [Labeling Axes](https://www.edureka.co/community/102186/how-set-the-figure-title-and-axes-labels-font-size-matplotlib)
 * Dad's help with XPATHS
+* Mr. Cozort (taught the class and provided files as well as tutorials)
+* Made in Bellarmine College Preparatory's Intro to Computer Programming Class
 
 
